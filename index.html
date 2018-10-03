@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="./style.css">
         <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script>
             $(document).ready(function() {
@@ -52,10 +53,13 @@
         </script>
     </head>
     <body>
-        <form>
-            Enter A book: <input type="text" id="titleField" value="">
-            <input id="titleButton" type="submit" value="Submit"><br>
-        </form>
-        <p id="BookInfo"></p>
+        <div class="white">
+            <form>
+                Enter A book: <input type="text" id="titleField" value="">
+                <input id="titleButton" type="submit" value="Submit"><br>
+            </form>
+            <br class="back">
+            <p id="BookInfo"></p>
+        </div>
     </body>
 </html>

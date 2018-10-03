@@ -1,0 +1,22 @@
+
+body {
+    background-image: url("./cp2pic.jpg");
+}
+
+form{
+    background-color: white;
+    width: 300px;
+}
+
+.back
+{
+    background-color: transparent;
+}
+
+#BookInfo
+{
+    background-color: white;
+    height: 400px;
+    width: 300px;
+    overflow: scroll;
+}
