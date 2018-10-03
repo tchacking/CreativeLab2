@@ -1,5 +1,10 @@
 #title
 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    overflow: visible;
     background-color: lightgrey;
     text-align: center;
     font-size: 20px;
@@ -7,6 +12,7 @@
 }
 
 body {
+    padding-top: 80px;
     background-image: url("./cp2pic.jpg");
 }
 
