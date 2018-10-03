@@ -33,3 +33,7 @@ form{
     width: 300px;
     overflow: scroll;
 }
+
+#bookForm {
+    padding: 2px;
+}
