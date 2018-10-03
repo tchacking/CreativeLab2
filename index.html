@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#titleButton").click(function(tmp) {
+                    var myurl = "http://openlibrary.org/search.json?q=";
+                    var bookTitle = $("#titleField").val();
+                    tmp.preventDefault();
+                    var newbooktitle = bookTitle.replace(" ", "+");
+                    
+                    console.log(newbooktitle);
+                    
+                    var newurl = myurl + newbooktitle;
+                    
+                    $.ajax ({
+                        url: newurl,
+                        dataType: "json",
+                        success : function(parsed_json) {
+                            console.log(parsed_json);
+                            var j = 0;
+                            if(parsed_json['numFound'] == 0) {
+                                window.alert("Book not found.");
+                            }
+                            else {
+                                while(parsed_json['docs'][j]['title'].toUpperCase() != bookTitle.toUpperCase()) {
+                                    j++;
+                                    if(j == parsed_json['docs'].length) {
+                                        window.alert("Book not found.");
+                                    }
+                                }
+                                var everything = "<ul>";
+                                everything += "<li>" + parsed_json['docs'][j]['title'] + "</li>";
+                                everything += "<li>" + "Author: " + parsed_json['docs'][j]['author_name'][0] + "</li>";
+                                everything += "<li>" + "Publish Year: " + parsed_json['docs'][j]['first_publish_year'] + "</li>";
+                                everything += "<li>" + "Main Characters:" + "<br>" + "<ol>";
+                                var items = parsed_json['docs'][j]['person'];
+                        
+                                $.each(items, function(i, item) {
+                                    everything += "<li>" + parsed_json['docs'][j]['person'][i] + "</li>";
+                                });
+                                everything += "</ol>" + "</li>";
+                                everything += "</ul>";
+                        
+                                $("#BookInfo").html(everything);
+                            }
+                        }
+                    });
+                });
+            })
+        </script>
+    </head>
+    <body>
+        <form>
+            Enter A book: <input type="text" id="titleField" value="">
+            <input id="titleButton" type="submit" value="Submit"><br>
+        </form>
+        <p id="BookInfo"></p>
+    </body>
+</html>
